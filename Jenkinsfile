@@ -4,7 +4,7 @@ pipeline{
   {
     stage('build') {
       steps{
-        sh "python3 manage.py runserver localhost:8282"
+        sh "python3 manage.py runserver 0:8282"
         sh "python3 manage.py runserver"
       }
     }
