@@ -22,9 +22,9 @@ pipeline{
     }
     post{
       sucess{
-        emailext body: 'Test Message', 
+        body: 'Test Message', 
         subject: 'Test Subject', 
-        to: 'test@example.com'
+        to: 'tarun.rawat@knoldus.com'
       }
     }
    }
