@@ -20,12 +20,12 @@ pipeline{
         echo "Deployed Successfully"
       }
     }
-    post{
-      success{
-        body: 'Test Message', 
-        subject: 'Test Subject', 
-        to: 'tarun.rawat@knoldus.com'
+  }
+  post{
+    always{
+      body: "Message Body", 
+      subject: 'Subject', 
+      mail to: 'tarun.rawat@knoldus.com'
       }
     }
-   }
 }
