@@ -18,10 +18,9 @@ pipeline{
         sh "python3 manage.py runserver 0:8000"
         sh "python3 manage.py runserver"
         echo "Deployed Successfully"
-        exit 0
+        emailext body: 'Test Message', subject: 'Test Subject', to: 'test@example.com'
       }
     }
-    
     
    }
 }
