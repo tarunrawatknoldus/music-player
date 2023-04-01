@@ -1,22 +1,23 @@
 pipeline{
   agent any
-  stages
-  {
-    stage('build') {
+  stages{
+    stage('Build') {
       steps{
-        sh "python3 manage.py runserver 0:8000"
-        sh "python3 manage.py runserver"
+        echo "Building"
+        echo "Build COmplete"
       }
     }
     stage('Test') {
       steps{
         echo "testing"
+        echo "testing complete"
       }
     }
-     stage('Deploy') {
+    stage('Deploy') {
       steps{
-        echo "deploy complete"
-      } 
+        sh "python3 manage.py runserver 0:8000"
+        sh "python3 manage.py runserver"
+      }
     }
    }
 }
