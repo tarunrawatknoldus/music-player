@@ -18,9 +18,14 @@ pipeline{
         sh "chmod a+x server.sh"
         sh "./server.sh"
         echo "Deployed Successfully"
-        emailext body: 'Test Message', subject: 'Test Subject', to: 'test@example.com'
       }
     }
-    
+    post{
+      sucess{
+        emailext body: 'Test Message', 
+        subject: 'Test Subject', 
+        to: 'test@example.com'
+      }
+    }
    }
 }
