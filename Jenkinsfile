@@ -21,5 +21,12 @@ pipeline{
         emailext body: 'Test Message', subject: 'Test Subject', to: 'test@example.com'
       }
     }
+    post{
+      sucess{
+        emailext body: 'Test Message', 
+        subject: 'Test Subject', 
+        to: 'test@example.com'
+      }
+    }
    }
 }
