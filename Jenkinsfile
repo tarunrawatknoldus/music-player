@@ -23,9 +23,10 @@ pipeline{
   }
   post{
     always{
-      body: "Message Body", 
-      subject: 'Subject', 
-      mail to: 'tarun.rawat@knoldus.com'
-      }
+       emailext to: "tarun.rawat@knoldus.com",
+       subject: "Test Email",
+       body: "Test",
+       attachLog: true
     }
+  }
 }
