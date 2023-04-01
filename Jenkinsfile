@@ -8,6 +8,11 @@ pipeline{
         sh "python3 manage.py runserver"
       }
     }
+    stage('Test') {
+      steps{
+        echo "testing"
+      }
+    }
     stage('Deploy') {
       steps{
         echo "deploy complete"
