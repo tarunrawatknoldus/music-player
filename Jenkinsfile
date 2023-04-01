@@ -21,7 +21,7 @@ pipeline{
       }
     }
     post{
-      sucess{
+      success{
         body: 'Test Message', 
         subject: 'Test Subject', 
         to: 'tarun.rawat@knoldus.com'
