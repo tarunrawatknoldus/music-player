@@ -13,7 +13,7 @@ pipeline{
        mail to: "tarun.rawat@knoldus.com",
        subject: "Test Email",
        body: "Test",
-       attachLog: true
+       compressLog: true
     }
   }
 }
