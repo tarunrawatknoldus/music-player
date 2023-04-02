@@ -9,11 +9,15 @@ pipeline{
     }
   }
   post{
-    always{
-       mail to: "tarun.rawat@knoldus.com",
-       subject: "Test Email",
-       body: "Test",
-       compressLog: true
-    }
-  }
+        success{
+            mail to: "tarun.rawat@knoldus.com",
+            subject: "Testing Build is successfull",
+            body: "success",
+        }
+    failure{
+      mail to: "tarun.rawat@knoldus.com",
+            subject: "Testing Build is failed",
+            body: "failed",
+     }
+   }
 }
