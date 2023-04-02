@@ -13,11 +13,9 @@ pipeline{
         echo "testing complete"
       }
     }
-    stage('Deploy') {
+    stage('Prod') {
       steps{
-        sh "chmod a+x server.sh"
-        sh "./server.sh"
-        echo "Deployed Successfully"
+        echo "Ready to deploy on production"
       }
     }
   }
