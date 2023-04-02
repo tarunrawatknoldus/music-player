@@ -9,7 +9,7 @@ pipeline{
     }
   }
   post{
-        success{
+    success{
             mail to: "tarun.rawat@knoldus.com",
             subject: "Testing Build is successfull",
             body: "success",
