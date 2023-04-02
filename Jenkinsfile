@@ -7,21 +7,10 @@ pipeline{
         echo "Build COmplete"
       }
     }
-    stage('Test') {
-      steps{
-        echo "testing"
-        echo "testing complete"
-      }
-    }
-    stage('testing') {
-      steps{
-        echo "Ready to deploy on Testing"
-      }
-    }
   }
   post{
     always{
-       emailext to: "tarun.rawat@knoldus.com",
+       mail to: "tarun.rawat@knoldus.com",
        subject: "Test Email",
        body: "Test",
        attachLog: true
