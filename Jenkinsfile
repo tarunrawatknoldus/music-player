@@ -12,12 +12,11 @@ pipeline{
     success{
             mail to: "tarun.rawat@knoldus.com",
             subject: "Testing Build is successfull",
-            body: "success",
-        }
+            body: "success"}
     failure{
       mail to: "tarun.rawat@knoldus.com",
             subject: "Testing Build is failed",
-            body: "failed",
+            body: "failed"
      }
    }
 }
