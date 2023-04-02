@@ -13,9 +13,9 @@ pipeline{
         echo "testing complete"
       }
     }
-    stage('Prod') {
+    stage('testing') {
       steps{
-        echo "Ready to deploy on production"
+        echo "Ready to deploy on Testing"
       }
     }
   }
