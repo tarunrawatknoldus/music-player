@@ -5,7 +5,7 @@ pipeline{
     	agent any
       steps {
         echo "building"
-      	sh 'docker build -t project:latest -f Dockerfile'
+      	sh 'docker build -t project:latest .'
         echo "Build complete"
       }
     }
