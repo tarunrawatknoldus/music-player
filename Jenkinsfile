@@ -1,10 +1,10 @@
 pipeline{
-  agent any
-  stages{
-    stage('Build') {
-      steps{
-        echo "Building"
-        echo "Build COmplete"
+    stage('Docker Build') {
+    	agent any
+      steps {
+        echo "building"
+      	sh 'docker build -t project:latest -f Dockerfile'
+        echo "Build complete"
       }
     }
   }
