@@ -9,6 +9,11 @@ pipeline{
         echo "Build complete"
       }
     }
+    stage("second step"){
+      steps{
+        echo "good to go for testing phase"
+      }
+    }
   }
   post{
     success{
