@@ -14,7 +14,7 @@ pipeline{
       steps {
       	withCredentials([string(credentialsId: 'dockerHub', variable: 'DOCKER_TOKEN')]) {
           sh "sudo docker login -u 'tarunsinghrawatknoldus' -p $DOCKER_TOKEN"
-          sh "docker tag project:latest final/project:latest"
+          sh "sudo docker tag project:latest final/project:latest"
           sh "sudo docker push final/project:latest"
         }
       }
