@@ -12,11 +12,13 @@ pipeline{
     stage('Docker Push') {
     	agent any
       steps {
-      	withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_TOKEN')]) {
+      	withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_TOKEN')]) 
+        {
           sh "docker login -u 'tarunsinghrawatknoldus'  -p $DOCKER_TOKEN"
           sh 'docker push project:latest'
         }
       }
+    }  
     stage("second step"){
       steps{
         echo "good to go for testing phase"
