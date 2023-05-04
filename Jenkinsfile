@@ -14,8 +14,9 @@ pipeline{
       steps {
       	withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_TOKEN')]) 
         {
-          sh "docker login -u 'tarunsinghrawatknoldus'  -p $DOCKER_TOKEN"
-          sh 'docker push project:latest'
+          sh "docker login -u 'tarunsinghrawatknoldus' -p $DOCKER_TOKEN"
+          sh 'docker tag project:latest tarunsinghrawatknoldus/project:latest'
+          sh 'docker push tarunsinghrawatknoldus/project:latest'
         }
       }
     }  
@@ -25,15 +26,4 @@ pipeline{
       }
     }
   }
-  post{
-    success{
-            mail to: "tarun.rawat@knoldus.com",
-            subject: "Testing Build is successfull",
-            body: "success"}
-    failure{
-      mail to: "tarun.rawat@knoldus.com",
-            subject: "Testing Build is failed",
-            body: "failed"
-     }
-   }
 }
