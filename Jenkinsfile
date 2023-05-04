@@ -12,11 +12,9 @@ pipeline{
     stage('Docker Push') {
     	agent any
       steps {
-      	withCredentials([string(credentialsId: 'dockerHub', variable: 'TOKEN')]) 
-        {
-          sh "docker login -u 'tarunsinghrawatknoldus' -p $TOKEN "
-          sh 'docker tag project:latest tarunsinghrawatknoldus/project:latest'
-          sh 'docker push tarunsinghrawatknoldus/project:latest'
+      	withCredentials([string(credentialsId: 'dockerHub', variable: 'DOCKER_TOKEN')]) {
+          sh "docker login -u 'tarunsinghrawatknoldus' -p $DOCKER_TOKEN"
+          sh "docker push project:latest"
         }
       }
     }  
