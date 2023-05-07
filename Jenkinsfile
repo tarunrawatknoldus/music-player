@@ -7,9 +7,6 @@ pipeline{
     {
         //this is the deployment pipeline
         stage('Docker Build') {
-            when {
-                branch "development"
-            }
             steps {
                 echo "building"
                 sh 'sudo docker build -t project:V.$BUILD_NUMBER .'
@@ -17,9 +14,6 @@ pipeline{
             }
         }
         stage('DockerHub creds and login') {
-            when {
-                branch "development"
-            }
             steps {
                 withCredentials([string(credentialsId: 'dockerHub', variable: 'DOCKER_TOKEN')]) {
                 sh "sudo docker login -u 'tarunsinghrawatknoldus' -p $DOCKER_TOKEN"
@@ -28,9 +22,6 @@ pipeline{
             }
         }  
         stage('Docker Push') {
-            when {
-                branch "development"
-            }
             steps {
             sh "sudo docker tag project:V.$BUILD_NUMBER tarunsinghrawatknoldus/project:V.$BUILD_NUMBER"
             sh "sudo docker push tarunsinghrawatknoldus/project:V.$BUILD_NUMBER"
@@ -38,9 +29,6 @@ pipeline{
         }
         }  
         stage("BUILD COMPLETE"){
-            when {
-                    branch "development"
-                }
             steps{
                 echo "good to go for testing phase"
             }
@@ -48,26 +36,17 @@ pipeline{
 
         //this is the testing pipeline
         stage('Test1') {
-            when {
-                    branch "testing"
-                }
             steps{
                 echo "first test"
             }
         }
         stage('Test2') {
-            when {
-                    branch "testing"
-                }
             steps{
                 echo "tsecond test"
                 echo "testing complete"
             }
         }
         stage('Prod') {
-            when {
-                    branch "testing"
-                }
             steps{
                 echo "Good to go for production"
             }
@@ -75,9 +54,6 @@ pipeline{
 
         //this is the production pipeline
         stage('Production for Kubernetes') {
-        when {
-                branch "production"
-            }
             steps{
                 echo "pulling latest image"
                 withCredentials([file(credentialsId: 'oi', variable: 'var1')]) {
@@ -94,9 +70,6 @@ pipeline{
         }
 
         stage('project is running') {
-            when {
-                branch "production"
-            }
             steps{
                 echo "The project is up and running"
             }
