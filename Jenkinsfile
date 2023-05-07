@@ -60,7 +60,9 @@ pipeline{
                 //sh "minikube start"
                 sh "sudo chmod 777 /home/knoldus/.minikube/profiles/minikube/client.key"
                 sh "kubectl create deployment finalproject-$BUILD_NUMBER --image=tarunsinghrawatknoldus/project:V.$BUILD_NUMBER --kubeconfig=$var1 "
+                sh "kubectl expose deployment finalproject-$BUILD_NUMBER --type=NodePort --port=8000 --target-port=8000 --kubeconfig=$var1 "
                 sh "sleep 15"
+                    
                 //sh "sleep 10"
                 sh "kubectl port-forward service/finalproject-$BUILD_NUMBER 8000:8000 --kubeconfig=$var1 "
                 }
