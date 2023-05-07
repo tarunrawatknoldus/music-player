@@ -5,6 +5,7 @@ pipeline{
     }
     stages
     {
+        //this is the deployment pipeline
         stage('Docker Build') {
             when {
                 branch "development"
@@ -44,7 +45,35 @@ pipeline{
                 echo "good to go for testing phase"
             }
         }
-    
+
+        //this is the testing pipeline
+        stage('Test1') {
+            when {
+                    branch "testing"
+                }
+            steps{
+                echo "first test"
+            }
+        }
+        stage('Test2') {
+            when {
+                    branch "testing"
+                }
+            steps{
+                echo "tsecond test"
+                echo "testing complete"
+            }
+        }
+        stage('Prod') {
+            when {
+                    branch "testing"
+                }
+            steps{
+                echo "Good to go for production"
+            }
+        }
+
+        //this is the production pipeline
         stage('Production for Kubernetes') {
         when {
                 branch "production"
