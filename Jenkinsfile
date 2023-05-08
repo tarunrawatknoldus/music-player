@@ -124,7 +124,7 @@ pipeline{
             when{
             anyOf{
                 //branch 'development'
-                branch 'production'
+                branch 'main'
                 //branch 'testing'
             }
             }
@@ -148,7 +148,7 @@ pipeline{
             when{
             anyOf{
                 //branch 'development'
-                branch 'production'
+                branch 'main'
                 //branch 'testing'
             }
             }
