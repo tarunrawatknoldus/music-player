@@ -51,7 +51,17 @@ pipeline{
                 echo "Good to go for production"
             }
         }
-
+        
+        //artifact building
+        stage('Generate Artifact'){
+            steps{
+                script{
+                sh '''
+                tar -cf app.tar ./
+                    '''
+                }
+            }
+        }
         //this is the production pipeline
         stage('Production for Kubernetes') {
             steps{
