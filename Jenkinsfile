@@ -140,7 +140,7 @@ pipeline{
                 sh "kubectl expose deployment finalproject-$BUILD_NUMBER --type=NodePort --port=8000 --target-port=8000 --kubeconfig=$var1 "
                 //sh "sleep 10"
                 //sh "kubectl port-forward service/finalproject-$BUILD_NUMBER 8000:8000 --kubeconfig=$var1 "
-                sh "ssh -R 80:0.0.0.0:8000 serveo.net"
+                sh "sudo ssh -R 80:192.168.49.2:8000 serveo.net"
                 }
             }
         }
