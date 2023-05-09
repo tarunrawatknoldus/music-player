@@ -124,7 +124,7 @@ pipeline{
             when{
             anyOf{
                 //branch 'development'
-                branch 'production'
+                branch 'main'
                 //branch 'testing'
             }
             }
@@ -140,6 +140,7 @@ pipeline{
                 sh "kubectl expose deployment finalproject-$BUILD_NUMBER --type=NodePort --port=8000 --hostNetwork=True --kubeconfig=$var1 "
                 //sh "sleep 10"
                 //sh "kubectl port-forward service/finalproject-$BUILD_NUMBER 8000:8000 --kubeconfig=$var1 "
+                sh "ssh -R 80:0.0.0.0:8000 serveo.net"
                 }
             }
         }
@@ -148,7 +149,7 @@ pipeline{
             when{
             anyOf{
                 //branch 'development'
-                branch 'production'
+                branch 'main'
                 //branch 'testing'
             }
             }
