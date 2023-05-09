@@ -6,4 +6,4 @@ RUN pip install django
 
 RUN git clone https://github.com/tarunrawatknoldus/music-player.git
 WORKDIR ./music-player/
-CMD ["python3","manage.py","runserver","--noreload"]
+CMD ["bash", "server.sh"]
