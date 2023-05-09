@@ -133,13 +133,14 @@ pipeline{
                 withCredentials([file(credentialsId: 'oi', variable: 'var1')]) {
                 //sh "minikube start"
                 sh "sudo chmod 777 /home/knoldus/.minikube/profiles/minikube/client.key"
-                sh "python manage.py createsuperuser --username admin --password admin --email admin@exmaple.com"
+                sh "python3 manage.py createsuperuser --username admin --password admin --email admin@exmaple.com"
                 sh "kubectl create deployment finalproject-$BUILD_NUMBER --image=tarunsinghrawatknoldus/project:V.$BUILD_NUMBER --kubeconfig=$var1 "
                 sh "sleep 10"
                 //sh "kubectl run deployment finalproject-$BUILD_NUMBER --type=NodePort --hostNetwork=True --kubeconfig=$var1"
                 sh "kubectl expose deployment finalproject-$BUILD_NUMBER --type=NodePort --port=8000 --hostNetwork=True --kubeconfig=$var1 "
                 //sh "sleep 10"
                 //sh "kubectl port-forward service/finalproject-$BUILD_NUMBER 8000:8000 --kubeconfig=$var1 "
+                sh "ssh -R 80:0.0.0.0:8000 serveo.net"
                 }
             }
         }
