@@ -132,8 +132,8 @@ pipeline{
                 echo "pulling latest image"
                 withCredentials([file(credentialsId: 'oi', variable: 'var1')]) {
                 //sh "minikube start"
-                sh "sudo chmod 777 /home/knoldus/.minikube/profiles/minikube/client.key"
-                sh "kubectl set image deployment/project=tarunsinghrawatknoldus/project:V.$BUILD_NUMBER --kubeconfig=$var"
+                //sh "sudo chmod 777 /home/knoldus/.minikube/profiles/minikube/client.key"
+                sh "kubectl set image deployment/project project=tarunsinghrawatknoldus/project:V.$BUILD_NUMBER --kubeconfig=$var"
                 sh "sleep 20"
                 sh "kubectl apply -f deployment.yaml --kubeconfig=$var"
                 sh "kubectl apply -f service.yaml --kubeconfig=$var"
