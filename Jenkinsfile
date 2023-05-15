@@ -133,7 +133,6 @@ pipeline{
                 withCredentials([file(credentialsId: 'oi', variable: 'var1')]) {
                 //sh "minikube start"
                 sh "sudo chmod 777 /home/knoldus/.minikube/profiles/minikube/client.key"
-                sh "python3 manage.py createsuperuser --username admin --password admin --email admin@exmaple.com"
                 sh "kubectl set image deployment/project=tarunsinghrawatknoldus/project:V.$BUILD_NUMBER --kubeconfig=$var"
                 sh "sleep 20"
                 sh "kubectl apply -f deployment.yaml --kubeconfig=$var"
