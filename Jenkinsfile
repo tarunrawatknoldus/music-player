@@ -143,6 +143,7 @@ pipeline{
                 //sh "sleep 10"
                 //sh "kubectl port-forward service/finalproject-$BUILD_NUMBER 8000:8000 --kubeconfig=$var1 "
                 //sh "ssh -R 80:0.0.0.0:8000 serveo.net"
+
                 }
             }
         }
