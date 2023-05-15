@@ -1,4 +1,5 @@
-FROM python:alpine3.18
+FROM python:3.9-buster
+RUN apt-get update -y
 RUN apt-get install git -y
 RUN pip install pillow && pip install django
 
