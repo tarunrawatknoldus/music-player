@@ -1,5 +1,5 @@
 FROM Ubuntu:alpine as Builder
-RRUN apt-get update -y
+RUN apt-get update -y
 RUN apt-get install git -y
 RUN git clone https://github.com/tarunrawatknoldus/music-player.git
 
