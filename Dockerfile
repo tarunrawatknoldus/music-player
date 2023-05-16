@@ -1,4 +1,4 @@
-FROM alpine:latest as Builder
+FROM ubuntu:latest as Builder
 RUN apt-get update -y
 RUN apt-get install git -y
 RUN git clone https://github.com/tarunrawatknoldus/music-player.git
