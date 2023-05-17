@@ -1,8 +1,12 @@
-FROM python:3.9-buster
-RUN apt-get update -y
-RUN apt-get install git -y
-RUN pip install pillow && pip install django
-
-RUN git clone https://github.com/tarunrawatknoldus/music-player.git
+FROM ubuntu:latest as Builder
 WORKDIR ./music-player/
-CMD ["python3", "manage.py", "runserver", "--noreload"]
+RUN apt update -y
+RUN apt install git -y
+RUN git clone https://github.com/tarunrawatknoldus/music-player.git
+
+FROM python:alpine3.18
+RUN pip install pillow && pip install django
+COPY --from=Builder ./music-player/ ./music-player/
+WORKDIR ./music-player/
+EXPOSE 8000
+CMD ["python3", "manage.py", "runserver", "0:8000", "--noreload"]
