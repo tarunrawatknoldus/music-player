@@ -4,7 +4,7 @@ pipeline{
     {
         
         //this is the deployment pipeline
-        stage('Docker Build') {
+        stage('Build Image') {
             when{
             anyOf{
                 branch 'development'
